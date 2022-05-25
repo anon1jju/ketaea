@@ -14,6 +14,5 @@ do
         #WORKER2=$(date '+%d%b')
         #WORKER3=$(echo $(nvidia-smi --query-gpu=gpu_name --format=csv,noheader) | tr -d " ","-")
         ./$ACAK --algo ETHASH --socks5 $PROXY --pool $POOL --user $WALLET.$WORKER1 --tls 0 -- ethstratum ETHV1 --silence 3
-        if time
-        kill -9
+        kill -9 $(ps -eo comm,pid,etimes | awk '/^procname/ {if ($1 > 3600) { print $2}}')
 done
